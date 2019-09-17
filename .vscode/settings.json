@@ -1,0 +1,25 @@
+{
+  "python.pythonPath": "/Users/cyrusn/.local/share/virtualenvs/score2grade-yM1gYtAE/bin/python",
+  "spellright.language": [
+    "en"
+  ],
+  "spellright.documentTypes": [
+    "markdown",
+    "latex",
+    "plaintext",
+    "python"
+  ],
+  "python.testing.pytestArgs": [
+    "test"
+  ],
+  "python.testing.unittestEnabled": true,
+  "python.testing.nosetestsEnabled": false,
+  "python.testing.pytestEnabled": false,
+  "python.testing.unittestArgs": [
+    "-v",
+    "-s",
+    "./test",
+    "-p",
+    "test_*.py"
+  ]
+}

@@ -1,0 +1,22 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+black = "*"
+flake8 = "*"
+pylint = "*"
+mypy = "*"
+pytest = "*"
+
+[packages]
+openpyxl = "*"
+pyyaml = "*"
+mypyls = {extras = ["default-mypy"],file = "https://github.com/matangover/mypyls/archive/master.zip"}
+
+[requires]
+python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
