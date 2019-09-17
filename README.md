@@ -11,7 +11,7 @@ Core subjects include _Chinese_, _English_, _Mathematics_ and _Liberal Study_. T
 The full mark of electives subjects is 200. Make sure the grading ranges are in scale with 200 as full mark.
 
 ### Combined Science
-Combined science (`cscb`) is an elective subjects, which have 2 parts, _Biology_ (`csb`) and _Chemistry_ (`csc`). The exam score of each part have to be grade separately. The final grade of this subject will simply take the rounded average of two parts.
+Combined science (`cscb`) is an elective subjects, which have 2 parts, _Biology_ (`csb`) and _Chemistry_ (`csc`). The exam score of each part have to be graded separately. The final grade of this subject will only take the rounded average of two parts.
 
 ### M2
 M2 will be treated as a elective subject, but the full mark of M2 is 100.
