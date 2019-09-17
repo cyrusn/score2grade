@@ -2,7 +2,7 @@ import yaml
 import argparse
 from openpyxl import load_workbook
 from grading import Grading
-from scores import Scores, compute_cscb_grade
+from scores import Scores
 from helper import isHeaderRow
 from typing import Union
 
@@ -57,16 +57,12 @@ if __name__ == "__main__":
             content: Union[int, str, None] = None
 
             if isHeaderRow(classcode_cell):
-                content = elective + "_grade"
-            elif subject == "cscb":
-                content = compute_cscb_grade(scores, classcode_cell)
+                content = f"{elective}_grade"
             elif subject is None:
                 # mean student dropped the elective
                 pass
             else:
-                content = scores.getGradeByClasscodeAndSubject(
-                    classcode_cell.value, subject
-                )
+                content = scores.get_grade(classcode_cell.value, subject)
 
             student_sheet.cell(row=row_index, column=col_index).value = content
 
@@ -76,15 +72,15 @@ if __name__ == "__main__":
         student_sheet.insert_cols(col_index, amount=1)
         content = None
         for classcode_cell in classcode_column:
+            classcode = classcode_cell.value
+            row_index = classcode_cell.row
             if isHeaderRow(classcode_cell):
                 content = subject
             elif subject is None:
                 pass
             else:
-                content = scores.getGradeByClasscodeAndSubject(
-                    classcode_cell.value, subject
-                )
+                content = scores.get_grade(classcode, subject)
 
-            student_sheet.cell(row=classcode_cell.row, column=col_index).value = content
+            student_sheet.cell(row=row_index, column=col_index).value = content
 
     student_wb.save(OUTPUT_FILE)

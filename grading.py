@@ -7,35 +7,27 @@ from helper import bail
 class Grading:
     def __init__(self, ws: Worksheet):
         self.ws = ws
+        self.header_row = ws[1]
+        self.subject_column = {
+            cell.value: self.ws[get_column_letter(cell.column)]
+            for cell in self.header_row
+        }
 
-    def getSubjectColumnLetter(self, subject: str) -> Optional[str]:
-        """
-            findSubjectCol returns the column letter of the subject,
-            it returns None if the subject is not found
-        """
-        for cell in self.ws[1]:
-            if cell.value == subject:
-                return get_column_letter(cell.column)
-        return None
-
-    def findGradeBySubjectAndScore(
+    def get_grade_by_score(
         self, subject: str, score: Union[int, float]
     ) -> Optional[int]:
-        column_letter = self.getSubjectColumnLetter(subject)
         score = int(round(score))
-        if column_letter is None:
-            bail("Subject ({}) not find".format(subject))
 
-        subject_column = self.ws[column_letter]
-        for cell in subject_column:
-            if cell.row != 1:
-                grading_range = [int(n) for n in cell.value.split(", ")]
-                lower_bound = grading_range[0]
-                upper_bound = grading_range[1]
+        if subject not in self.subject_column:
+            bail(f"Subject ({subject}) not find")
 
-                isWithinRange = score >= lower_bound and score <= upper_bound
-                if isWithinRange:
-                    return self.ws.cell(row=cell.row, column=1).value
+        subject_column = self.subject_column[subject]
+        for cell in subject_column[1:]:
+            lower, upper = [int(n) for n in cell.value.split(", ")]
 
-        bail("Score: {} of the subject {} is out of range".format(score, subject))
+            isWithinRange = score >= lower and score <= upper
+            if isWithinRange:
+                return self.ws.cell(row=cell.row, column=1).value
+
+        bail(f"Score: {score} of the subject {subject} is out of range")
         return None
