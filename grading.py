@@ -1,11 +1,11 @@
-from openpyxl import worksheet
+from openpyxl.worksheet.worksheet import Worksheet
 from openpyxl.utils import get_column_letter
 from typing import Optional, Union
 from helper import bail
 
 
 class Grading:
-    def __init__(self, ws: worksheet):
+    def __init__(self, ws: Worksheet):
         self.ws = ws
 
     def getSubjectColumnLetter(self, subject: str) -> Optional[str]:

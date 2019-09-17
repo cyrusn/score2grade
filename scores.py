@@ -2,6 +2,9 @@ from grading import Grading
 from typing import Optional
 from openpyxl import Workbook
 from openpyxl.utils import get_column_letter
+from statistics import mean
+from typing import List
+from openpyxl.cell import Cell
 
 
 class Scores:
@@ -30,3 +33,12 @@ class Scores:
                 return self.grading.findGradeBySubjectAndScore(subject, score)
 
         return None
+
+
+def compute_cscb_grade(scores: Scores, classcode_cell: Cell) -> int:
+    grades: List[int] = []
+    for part in ["csc", "csb"]:
+        grade = scores.getGradeByClasscodeAndSubject(classcode_cell.value, part)
+        if grade is not None:
+            grades.append(grade)
+    return int(round(mean(grades)))

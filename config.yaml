@@ -2,4 +2,4 @@ file:
   grading: "./data/grading_ranges.xlsx"
   scores: "./data/scores.xlsx"
   students: "./data/students.xlsx"
-  result: "./data/grading_result.xlsx"
+  output: "./data/output.xlsx"
