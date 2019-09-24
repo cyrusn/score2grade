@@ -40,9 +40,9 @@ class Scores:
         return int(round(mean(grades)))
 
     def get_grade(self, classcode: str, subject: str) -> Optional[int]:
+        print(classcode)
         return (
             self._get_grade(classcode, subject)
             if subject != "cscb"
             else self._compute_cscb_grade(classcode)
         )
-

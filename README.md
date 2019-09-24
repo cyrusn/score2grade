@@ -5,16 +5,18 @@
 ## Subjects
 
 ### Core Subjects
-Core subjects include _Chinese_, _English_, _Mathematics_ and _Liberal Study_. The full mark of these subjects is 300. Make sure the grading ranges are in scale with 300 as full mark.
+
+Core subjects include _Chinese_, _English_, _Mathematics_ and _Liberal Study_. The full mark of these subjects is 300. Make sure the grading ranges have 300 as full mark.
 
 ### Electives
-The full mark of electives subjects is 200. Make sure the grading ranges are in scale with 200 as full mark.
+
+The full mark of electives subjects is 200 (with the exception of M2). Make sure the grading ranges have 200 as full mark.
+
+M2 will be treated as an elective subject, but the full mark of M2 is 100.
 
 ### Combined Science
-Combined science (`cscb`) is an elective subjects, which have 2 parts, _Biology_ (`csb`) and _Chemistry_ (`csc`). The exam score of each part have to be graded separately. The final grade of this subject will only take the rounded average of two parts.
 
-### M2
-M2 will be treated as a elective subject, but the full mark of M2 is 100.
+Combined science (`cscb`) is an elective subject, consisted of 2 parts: _Biology_ (`csb`) and _Chemistry_ (`csc`). The exam score of each part be graded separately. The final grade of `cscb` will be the rounded average of two parts.
 
 ## Requirements
 
@@ -43,7 +45,6 @@ Scores have to be rounded first, the grading ranges are not continuous. So both 
 
 The score file stores the all exam scores of all students. Each sheet only contains score of one subject, the sheet name should be named with subject code. The following table is an example of Subject Chinese in sheet named with `chi`
 
-
 | classcode | ename | cname | chi |
 | --------- | ----- | ----- | --- |
 | 6A01      | xx    | xx    | xx  |
@@ -54,10 +55,9 @@ The score file stores the all exam scores of all students. Each sheet only conta
 | 6A06      | xx    | xx    | xx  |
 | 6A07      | xx    | xx    | xx  |
 
-
 ## `students.xlsx`
 
-The students file stores all the student basic information where x1 and x2 is the subject code of their electives. If student also takes m2, the value in m2 is just `m2`.
+The students file stores all the student basic information where x1 and x2 is the subject code of their electives. If student also takes m2, the value in m2 is _any truthy value_.
 
 | classcode | ename | cname | x1    | x2   | m2  |
 | --------- | ----- | ----- | ----- | ---- | --- |
@@ -69,8 +69,7 @@ The students file stores all the student basic information where x1 and x2 is th
 | 6A06      | xx    | xx    | va    |      |     |
 | 6A07      | xx    | xx    | ths   | ict  | m2  |
 
-
-# Report
+## Report
 
 The output will be an xlsx document with the following information:
 
